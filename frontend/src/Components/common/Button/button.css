@@ -1,0 +1,30 @@
+.button {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  height: 44px;
+  box-sizing: border-box;
+  font: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.primary-button {
+  background: var(--primary-default);
+  color: white;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+.secondary-button {
+  background: var(--neutral-white);
+  color: var(--primary-default);
+}
+
+.secondary-button:hover {
+  opacity: 0.8;
+}

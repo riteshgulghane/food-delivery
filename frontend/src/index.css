@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+
+:root {
+  --primary-default: #4e60ff;
+  --primary-hover: #5565f9;
+  --neutral-black: #2b2b43;
+  --neutral-gray: #83859c;
+  --neutral-white: #ffffff;
+  --neutral-gray-light: #c7c8d2;
+  --neutral-gray-lightest: #edeef2;
+  --neutral-gray-dark: #333333;
+  --primary-light: #e5e5ff;
+  --white: #ffffff;
+
+  --secondary-default: #e46239;
+  --secondary-light: #e5dbee;
+
+  --font-nunito: "Nunito";
+}

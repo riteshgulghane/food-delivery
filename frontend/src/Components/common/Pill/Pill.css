@@ -1,0 +1,11 @@
+.pill {
+    background: var(--neutral-gray-lightest);
+    color: var(--neutral-gray-dark);
+    font-family: var(--font-nunito);
+    font-size: 12px;
+    height: 24px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+    align-content: center;
+}

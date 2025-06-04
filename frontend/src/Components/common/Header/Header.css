@@ -1,0 +1,19 @@
+.main-header {
+  height: 5rem;
+  width: 100%;
+  background-color: var(--neutral-white);
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--neutral-gray-lightest);
+  position: fixed;
+  z-index: 1;
+}
+
+.menus {
+  display: flex;
+  gap: 1rem;
+}
+
+.menus menu:last-child {
+  border-left: 1px solid var(--neutral-gray-lightest);
+  padding-left: 1rem;
+}
