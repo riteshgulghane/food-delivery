@@ -33,9 +33,9 @@ const Header = () => {
             <Link to="/bag">
                 <ShoppingBag count={4} />
             </Link>
-            <Link to="/profile">
-              <img src="/asset/icons/user.svg" alt="Profile" />
-            </Link>
+            {/* <Link to="/profile">
+              <img src="%PUBLIC_URL%/asset/icons/user.svg" alt="Profile" />
+            </Link> */}
           </div>
         </header>
       </div>
