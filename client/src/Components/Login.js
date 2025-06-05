@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "./common/Button/Button";
 import Input from "./common/Input";
 import Checkbox from "./common/Checkbox";
@@ -7,22 +7,17 @@ import { useDispatch } from "react-redux";
 import { signIn } from "../Store/UserStore";
 import ToastNotification from "./common/ToastNotification/ToastNotification";
 import { ToastTypes } from "./common/Toast/Toast";
-import { useGetUser } from "../Adapters/User.Adapter";
-
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
-
-  const { getUser } = useGetUser();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      // setError("Please fill in all fields");
+      return;
     } else {
       setEmail("");
       setPassword("");
@@ -30,14 +25,10 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
-
   return (
     <ToastNotification
       props={{
-        message: error,
+        message: "",
         type: ToastTypes.ERROR,
         toastId: new Date().getTime(),
       }}

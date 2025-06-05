@@ -4,6 +4,7 @@ export const ShoppingBagVariant = {
   DEFAULT: "default",
   CART: "cart",
   RESTAURANT: "restaurant",
+  LOADING: "loading",
 };
 
 const ShoppingBagVariantStyles = {
@@ -19,7 +20,7 @@ const ShoppingBag = ({ count, variant = ShoppingBagVariant.CART }) => {
     >
       <img
         src={
-          count === 0
+          variant === ShoppingBagVariant.LOADING || count === 0
             ? "/asset/icons/shopping_bag_disabled.svg"
             : "/asset/icons/shopping bag.svg"
         }

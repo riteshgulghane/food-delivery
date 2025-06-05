@@ -19,6 +19,7 @@
   border: 2px solid var(--primary-default);
   color: var(--primary-default);
   transition: border-color 0.3s ease, color 0.3s ease;
+  margin: -1px;
 }
 
 .category-card:hover {

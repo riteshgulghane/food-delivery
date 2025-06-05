@@ -1,21 +1,22 @@
 import "./Category.css";
 import CategoryCard from "../common/Category-Card/CategoryCard";
-import { CategoryCardList } from "../Utils/Categories";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCategory } from "../../Store/Category.store";
 
 const Category = () => {
-  const [selectedCategory, setSelectedCategory] = useState([]);
+  const dispatch = useDispatch();
+  const categoryData = useSelector((state) => state.category.category);
 
   return (
     <div className="flex gap-8 mt-8">
-      {CategoryCardList.map((category) => (
+      {categoryData.map((category) => (
         <CategoryCard
           className="flex-1"
           key={category.title}
           title={category.title}
           image={category.image}
-          selected={category.selected}
-          onClick={() => setSelectedCategory(category.title)}
+          selected={category.select}
+          onClick={() => dispatch(selectCategory(category))}
         />
       ))}
     </div>

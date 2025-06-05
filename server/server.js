@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 require("dotenv").config({ path: "./config.env" });
 const UserRoutes = require("./routes/user.route");
 const RestaurantRoutes = require("./routes/restaurant.route");
+const CategoryRoutes = require("./routes/category.route");
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Enable parsing of JSON request bodies
@@ -21,6 +22,8 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 app.use("/api/user", UserRoutes);
 
 app.use("/api/restaurant", RestaurantRoutes);
+
+app.use("/api/category", CategoryRoutes);
 
 app.get("/api/test", (req, res) => {
   res.json({ message: "API is working!" });

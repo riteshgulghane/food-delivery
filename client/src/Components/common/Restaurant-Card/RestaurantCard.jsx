@@ -1,26 +1,33 @@
 import Pill from "../Pill/Pill";
 import "./RestaurantCard.css";
-import { categoryMap } from "../../Utils/Categories";
 import { useState, useEffect } from "react";
 import ShoppingBag, { ShoppingBagVariant } from "../Shopping-bag/ShoppingBag";
+import { getCategoryImagesMap } from "../../../Store/Category.store";
 
-const RestaurantCard = ({ restaurant, className }) => {
+const RestaurantCard = ({ restaurant, className, isLoading }) => {
   const [categories, setCategories] = useState([]);
+  const categoryImagesMap = getCategoryImagesMap();
 
   useEffect(() => {
+    if (isLoading || !restaurant || !categoryImagesMap) return;
+
     setCategories(
-      restaurant.categories.map((category) => categoryMap[category])
+      restaurant.categories.map((category) => categoryImagesMap[category])
     );
-  }, [restaurant]);
+  }, [restaurant, categoryImagesMap]);
 
   return (
     <div className={`restaurant-card ${className}`}>
       <div className="restaurant-image relative">
-        <img
-          className="w-full object-cover "
-          src={restaurant.restaurantThumbnail}
-          alt={restaurant.restaurantName}
-        />
+        {isLoading ? (
+          <div className="loading restaurant-card-image"></div>
+        ) : (
+          <img
+            className={`restaurant-card-image w-full object-cover`}
+            src={restaurant.restaurantThumbnail}
+            alt={restaurant.restaurantName}
+          />
+        )}
         {restaurant.isFeatured && (
           <div className="featured absolute top-0 right-0">FEATURED</div>
         )}
@@ -28,34 +35,63 @@ const RestaurantCard = ({ restaurant, className }) => {
       <div className="p-4 flex flex-col gap-3">
         <div className="flex gap-3 justify-between">
           <div className="flex flex-col gap-1">
-            <h2 className="restaurant-card-title">
+            <h2
+              className={`restaurant-card-title ${isLoading ? "loading" : ""}`}
+            >
               {restaurant.restaurantName}
             </h2>
-            <div className="flex gap-[6px] items-center ">
-              <div className="clock">
-                <img src="/asset/icons/clock.svg" alt="Delivery Time" />
-              </div>
-              <div className="delivery-time  flex gap-2 items-center">
-                <span>{restaurant.deliveryTime}</span>
-                <span className="divider"></span>
-                <span>{restaurant.currencySymbol}{restaurant.minimumAmount} min sum</span>
-              </div>
+            <div
+              className={`flex gap-[6px] items-center ${
+                isLoading ? "loading" : ""
+              }`}
+            >
+              {!isLoading && (
+                <>
+                  <div className="clock">
+                    <img src="/asset/icons/clock.svg" alt="Delivery Time" />
+                  </div>
+                  <div
+                    className={`delivery-time  flex gap-2 items-center ${
+                      isLoading ? "loading" : ""
+                    }`}
+                  >
+                    <span>{restaurant.deliveryTime}</span>
+                    <span className="divider"></span>
+                    <span>
+                      {restaurant.currencySymbol}
+                      {restaurant.minimumAmount} min sum
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
           <ShoppingBag
-            variant={ShoppingBagVariant.RESTAURANT}
+            variant={
+              isLoading
+                ? ShoppingBagVariant.LOADING
+                : ShoppingBagVariant.RESTAURANT
+            }
             count={restaurant.count}
           />
         </div>
-        <div className="flex gap-2">
-          {categories.map((category) => (
-            <Pill
-              key={category.title}
-              text={category.title}
-              icon={category.image}
-            />
-          ))}
+        <div className={`flex gap-2`}>
+          {isLoading
+            ? Array.from({ length: 2 }).map((_, index) => (
+                <Pill
+                  key={`loading-${index}`}
+                  className={isLoading ? "loading" : ""}
+                  text="      "
+                />
+              ))
+            : categories.map((category) => (
+                <Pill
+                  key={category.title}
+                  text={category.title}
+                  icon={category.image}
+                />
+              ))}
         </div>
       </div>
     </div>
