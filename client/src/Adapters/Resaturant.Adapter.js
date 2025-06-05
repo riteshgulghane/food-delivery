@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { API_BASE_URL } from "../constants";
 
 export const useGetRestaurant = () => {
   const [restaurantData, setRestaurantData] = useState([]);
@@ -9,8 +8,7 @@ export const useGetRestaurant = () => {
   const getRestaurants = async () => {
     try {
       setLoading(true);
-      const url = `${API_BASE_URL}/api/restaurant`;
-      const response = await fetch(url, {
+      const response = await fetch('api/restaurant', {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

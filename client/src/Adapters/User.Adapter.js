@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { API_BASE_URL } from "../constants";
 
 export const useGetUser = () => {
   const [userData, setUserData] = useState([]);
@@ -9,8 +8,8 @@ export const useGetUser = () => {
   const getUser = async () => {
     try {
       setLoading(true);
-      const url = `${API_BASE_URL}/api/test`;
-      const response = await fetch(url, {
+
+      const response = await fetch("api/test", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
