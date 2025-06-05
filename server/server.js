@@ -26,7 +26,7 @@ app.get("/api/test", (req, res) => {
   res.json({ message: "API is working!" });
 });
 
-app.get("/{*any}", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
