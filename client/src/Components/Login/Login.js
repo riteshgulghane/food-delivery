@@ -8,6 +8,7 @@ import { signIn } from "../../Store/UserStore";
 import ToastNotification from "../common/ToastNotification/ToastNotification";
 import { ToastTypes } from "../common/Toast/Toast";
 import useDeviceType, { DEVICE_TYPE } from "../../Utils/deviceType";
+import { useNavigate } from 'react-router-dom';
 import "./Login.css";
 
 const Login = () => {
@@ -15,6 +16,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deviceType = useDeviceType();
 
@@ -25,7 +27,9 @@ const Login = () => {
     } else {
       setEmail("");
       setPassword("");
+      
       dispatch(signIn({ email, password }));
+      navigate('/home');
     }
   };
 
