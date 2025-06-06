@@ -6,7 +6,7 @@ import { fetchCategories } from "./Store/Category.store";
 import { useDispatch, useSelector } from "react-redux";
 import { API_CALL_STATUS } from "./constants/constant";
 
-const Login = lazy(() => import("./Components/Login"));
+const Login = lazy(() => import("./Components/Login/Login"));
 const Home = lazy(() => import("./Components/Home"));
 
 function App() {

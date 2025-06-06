@@ -8,7 +8,7 @@ const Category = () => {
   const categoryData = useSelector((state) => state.category.category);
 
   return (
-    <div className="flex gap-8 mt-8">
+    <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-6 gap-8 mt-8">
       {categoryData.map((category) => (
         <CategoryCard
           className="flex-1"

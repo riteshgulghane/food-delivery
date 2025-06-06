@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  height: 80px;
   flex-direction: column;
   gap: 12px;
   padding-block: 14px;
@@ -12,7 +13,6 @@
   transition: border-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
   color: var(--neutral-gray-dark);
-
 }
 
 .category-card.selected {

@@ -17,7 +17,7 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
   }, [restaurant, categoryImagesMap]);
 
   return (
-    <div className={`restaurant-card ${className}`}>
+    <div className={`restaurant-card ${className} flex flex-col md:flex-row lg:flex-col gap-4`}>
       <div className="restaurant-image relative">
         {isLoading ? (
           <div className="loading restaurant-card-image"></div>

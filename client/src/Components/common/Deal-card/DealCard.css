@@ -4,8 +4,19 @@
   height: 188px;
 }
 
+.deal-card.tablet {
+
+  height: 144px;
+}
+
 .deal-card-image {
   width: 53%;
+}
+
+.deal-card-image.tablet {
+  img {
+    height: 144px;
+  }
 }
 
 .deal-card-title {
@@ -21,9 +32,24 @@
   font-family: var(--font-nunito);
 }
 
+.deal-card-offer.mobile {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.deal-card-offer.tablet {
+  font-size: 28px;
+  line-height: 32px;
+}
+
 .deal-card-description {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
   color: var(--neutral-gray);
+}
+
+.deal-card-description.mobile {
+  font-size: 10px;
+  line-height: 14px;
 }
