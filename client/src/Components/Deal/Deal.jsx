@@ -1,4 +1,4 @@
-import DealCard from "../common/Deal-card/DealCard";
+import DealCard from '../common/Deal-card/DealCard';
 
 const Deal = () => {
   return (

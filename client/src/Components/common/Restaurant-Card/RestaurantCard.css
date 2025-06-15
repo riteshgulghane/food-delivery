@@ -1,5 +1,6 @@
 .restaurant-card {
   border-radius: 16px;
+  width: 100%;
   background: var(--primary-white);
   border: 1px solid var(--neutral-gray-lightest);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -30,7 +31,7 @@
 
 .restaurant-card-title.loading {
   width: 100%;
-  content: "";
+  content: '';
   height: 24px;
   animation: shimmer 1.5s infinite linear;
 }
@@ -70,14 +71,9 @@
 }
 
 .loading {
+  width: 100%;
   animation: shimmer 1.5s infinite linear;
-  background: linear-gradient(
-    to right,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
+  background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
   background-size: 200% 100%;
 }
 

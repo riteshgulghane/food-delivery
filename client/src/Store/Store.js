@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import UserReducer from "./UserStore";
-import CategoryReducer from "./Category.store";
-import RestaurantReducer from "./Restaurant.store";
+import { configureStore } from '@reduxjs/toolkit';
+import UserReducer from './UserStore';
+import CategoryReducer from './Category.store';
+import RestaurantReducer from './Restaurant.store';
 
 const Store = configureStore({
   reducer: {

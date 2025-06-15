@@ -1,4 +1,4 @@
-const Category = require("../models/Category"); // Import the Category Model
+const Category = require('../models/Category'); // Import the Category Model
 
 class CategoryService {
   // Method to get all categories
@@ -7,8 +7,8 @@ class CategoryService {
       const categories = await Category.find({});
       return categories;
     } catch (error) {
-      console.error("Error in CategoryService.getAllCategories:", error);
-      throw new Error("Could not retrieve categories.");
+      console.error('Error in CategoryService.getAllCategories:', error);
+      throw new Error('Could not retrieve categories.');
     }
   }
 
@@ -18,8 +18,8 @@ class CategoryService {
       const savedCategory = await newCategory.save();
       return savedCategory;
     } catch (error) {
-      console.error("Error in CategoryService.addCategory:", error);
-      throw new Error("Could not add category.");
+      console.error('Error in CategoryService.addCategory:', error);
+      throw new Error('Could not add category.');
     }
   }
 
@@ -28,22 +28,19 @@ class CategoryService {
       const newCategories = await Category.insertMany(categoriesData);
       return newCategories;
     } catch (error) {
-      console.error("Error in CategoryService.addBulkCategories:", error);
-      throw new Error("Could not add bulk categories.");
+      console.error('Error in CategoryService.addBulkCategories:', error);
+      throw new Error('Could not add bulk categories.');
     }
   }
 
   async bulkUpdateCategories(categoriesData) {
     try {
-      console.log("Categories Data:", categoriesData);
-      const newCategories = await Category.updateMany(
-        {},
-        { select: false }
-      );
+      console.log('Categories Data:', categoriesData);
+      const newCategories = await Category.updateMany({}, { select: false });
       return newCategories;
     } catch (error) {
-      console.error("Error in CategoryService.bulkUpdateCategories:", error);
-      throw new Error("Could not update bulk categories.");
+      console.error('Error in CategoryService.bulkUpdateCategories:', error);
+      throw new Error('Could not update bulk categories.');
     }
   }
 }

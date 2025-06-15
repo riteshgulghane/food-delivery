@@ -10,7 +10,9 @@
   gap: 12px;
   padding-block: 14px;
   padding-inline: 16px;
-  transition: border-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
   cursor: pointer;
   color: var(--neutral-gray-dark);
 }
@@ -18,7 +20,9 @@
 .category-card.selected {
   border: 2px solid var(--primary-default);
   color: var(--primary-default);
-  transition: border-color 0.3s ease, color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
   margin: -1px;
 }
 
@@ -31,4 +35,47 @@
   font-weight: bold;
   line-height: 18px;
   font-family: var(--font-nunito);
+}
+
+.shimmer-card {
+  border-radius: 16px;
+  background: var(--primary-light);
+  border: 1px solid var(--neutral-gray-lightest);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 80px;
+  flex-direction: column;
+  gap: 12px;
+  padding-block: 14px;
+  padding-inline: 16px;
+  cursor: pointer;
+}
+
+.shimmer-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-size: 200% 100%;
+}
+
+.shimmer-title {
+  width: 80%;
+  height: 16px;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite linear;
+  background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
 }

@@ -1,4 +1,4 @@
-const Restaurant = require("../models/Restaurant"); // Import the Restaurant Model
+const Restaurant = require('../models/Restaurant'); // Import the Restaurant Model
 
 class RestaurantService {
   // Method to get all restaurants
@@ -7,8 +7,8 @@ class RestaurantService {
       const restaurants = await Restaurant.find({});
       return restaurants;
     } catch (error) {
-      console.error("Error in RestaurantService.getAllRestaurants:", error);
-      throw new Error("Could not retrieve restaurants.");
+      console.error('Error in RestaurantService.getAllRestaurants:', error);
+      throw new Error('Could not retrieve restaurants.');
     }
   }
 
@@ -18,8 +18,8 @@ class RestaurantService {
       const savedRestaurant = await newRestaurant.save();
       return savedRestaurant;
     } catch (error) {
-      console.error("Error in RestaurantService.addRestaurant:", error);
-      throw new Error("Could not add restaurant.");
+      console.error('Error in RestaurantService.addRestaurant:', error);
+      throw new Error('Could not add restaurant.');
     }
   }
 
@@ -28,8 +28,8 @@ class RestaurantService {
       const newRestaurants = await Restaurant.insertMany(restaurantsData);
       return newRestaurants;
     } catch (error) {
-      console.error("Error in RestaurantService.addBulkRestaurants:", error);
-      throw new Error("Could not add bulk restaurants.");
+      console.error('Error in RestaurantService.addBulkRestaurants:', error);
+      throw new Error('Could not add bulk restaurants.');
     }
   }
 }

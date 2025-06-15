@@ -1,4 +1,3 @@
-
 const restaurantService = require('../services/restaurant.service'); // Import the Restaurant Service
 
 class RestaurantController {
@@ -35,4 +34,4 @@ class RestaurantController {
   }
 }
 
-module.exports = new RestaurantController(); 
+module.exports = new RestaurantController();

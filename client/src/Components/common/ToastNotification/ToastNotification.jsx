@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import "./ToastNotification.css";
-import Toast from "../Toast/Toast";
-import { ToastTypes } from "../Toast/Toast";
+import './ToastNotification.css';
+import Toast from '../Toast/Toast';
+import { ToastTypes } from '../Toast/Toast';
 
 const ToastNotification = ({
-  props = { message: "", type: ToastTypes.INFO, toastId: 0 },
+  props = { message: '', type: ToastTypes.INFO, toastId: 0 },
   children,
 }) => {
   const [notifications, setNotifications] = React.useState([]);
@@ -13,9 +13,9 @@ const ToastNotification = ({
 
   React.useEffect(() => {
     if (props?.message) {
-      setNotifications((prev) => [...prev, props]);
+      setNotifications(prev => [...prev, props]);
       notificationTimeout.current = setTimeout(() => {
-        setNotifications((prev) => prev.filter((_, index) => index !== 0));
+        setNotifications(prev => prev.filter((_, index) => index !== 0));
       }, 3000);
     }
 

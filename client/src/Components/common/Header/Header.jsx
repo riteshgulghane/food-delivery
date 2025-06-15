@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Search from "../Search/Search";
-import "./Header.css";
-import ShoppingBag from "../Shopping-bag/ShoppingBag";
-import useDeviceType from "../../../Utils/deviceType";
-import { DEVICE_TYPE } from "../../../Utils/deviceType";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Search from '../Search/Search';
+import './Header.css';
+import ShoppingBag from '../Shopping-bag/ShoppingBag';
+import useDeviceType, { DEVICE_TYPE } from '../../../utils/deviceType';
 
 const Header = () => {
-  const handleSearch = (value) => {
+  const handleSearch = value => {
     console.log(value);
   };
 
@@ -25,15 +24,9 @@ const Header = () => {
         <header className=" flex justify-between items-center p-4">
           <div className="flex items-center gap-12">
             <Link to="/" className="text-gray-800 dark:text-white">
-              <img
-                src="/asset/logo/shape.svg"
-                alt="Logo"
-                className="w-20 h-10"
-              />
+              <img src="/asset/logo/shape.svg" alt="Logo" className="w-20 h-10" />
             </Link>
-            {deviceType !== DEVICE_TYPE.MOBILE && (
-              <Search onSearch={handleSearch} />
-            )}
+            {deviceType !== DEVICE_TYPE.MOBILE && <Search onSearch={handleSearch} />}
           </div>
 
           <div className="flex items-center space-x-6">

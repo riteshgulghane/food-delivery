@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Input = ({ icon, ...props }) => {
   return (
@@ -13,12 +13,15 @@ const Input = ({ icon, ...props }) => {
         <input
           className="h-11 w-full border border-neutral-gray-light rounded-lg box-border p-3 text-sm leading-5"
           style={{
-            borderColor: "var(--neutral-gray-light)",
+            borderColor: 'var(--neutral-gray-light)',
           }}
           {...props}
         />
         {icon && (
-          <span className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2" onClick={icon.onClick}>
+          <span
+            className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2"
+            onClick={icon.onClick}
+          >
             {icon}
           </span>
         )}
@@ -29,8 +32,6 @@ const Input = ({ icon, ...props }) => {
 
 Input.propTypes = {
   icon: PropTypes.element,
-
 };
-
 
 export default Input;

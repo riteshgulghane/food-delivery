@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_CALL_STATUS } from "../constants/constant";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_CALL_STATUS } from '../constants/constant';
 
 const initialState = {
   category: [],
@@ -8,33 +8,29 @@ const initialState = {
 };
 let categoryImages = null;
 
-export const fetchCategories = createAsyncThunk(
-  "category/fetchCategories",
-  async () => {
-    const response = await fetch("api/category");
-    return response.json();
-  }
-);
-
+export const fetchCategories = createAsyncThunk('category/fetchCategories', async () => {
+  const response = await fetch('api/category');
+  return response.json();
+});
 
 const categorySlice = createSlice({
-  name: "category",
+  name: 'category',
   initialState,
   reducers: {
     updateCategories: (state, action) => {
       state.category = [...state.category, action.payload];
     },
     selectCategory: (state, action) => {
-      state.category.forEach((category) => {
+      state.category.forEach(category => {
         if (category.title === action.payload.title) {
           category.select = !category.select;
         }
       });
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchCategories.pending, (state) => {
+      .addCase(fetchCategories.pending, state => {
         state.status = API_CALL_STATUS.LOADING;
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
@@ -49,7 +45,7 @@ const categorySlice = createSlice({
   },
 });
 
-export const getCategoryImagesMap = (state) => {
+export const getCategoryImagesMap = state => {
   if (!categoryImages && state && state.category && state.category.length > 0) {
     categoryImages = state.category.reduce((acc, curr) => {
       acc[curr.title] = {

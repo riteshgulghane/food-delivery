@@ -1,20 +1,17 @@
-import Pill from "../Pill/Pill";
-import "./RestaurantCard.css";
-import { useState, useEffect } from "react";
-import ShoppingBag, { ShoppingBagVariant } from "../Shopping-bag/ShoppingBag";
-import { getCategoryImagesMap } from "../../../Store/Category.store";
+import Pill from '../Pill/Pill';
+import './RestaurantCard.css';
+import { useMemo, memo } from 'react';
+import ShoppingBag, { ShoppingBagVariant } from '../Shopping-bag/ShoppingBag';
+import { getCategoryImagesMap } from '../../../Store/Category.store';
 
 const RestaurantCard = ({ restaurant, className, isLoading }) => {
-  const [categories, setCategories] = useState([]);
   const categoryImagesMap = getCategoryImagesMap();
 
-  useEffect(() => {
-    if (isLoading || !restaurant || !categoryImagesMap) return;
-
-    setCategories(
-      restaurant.categories.map((category) => categoryImagesMap[category])
-    );
-  }, [restaurant, categoryImagesMap]);
+  // Use useMemo instead of useState + useEffect to avoid unnecessary re-renders
+  const categories = useMemo(() => {
+    if (isLoading || !restaurant || !categoryImagesMap) return [];
+    return restaurant.categories.map(category => categoryImagesMap[category]);
+  }, [restaurant, categoryImagesMap, isLoading]);
 
   return (
     <div className={`restaurant-card ${className} flex flex-col md:flex-row lg:flex-col gap-4`}>
@@ -28,23 +25,15 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
             alt={restaurant.restaurantName}
           />
         )}
-        {restaurant.isFeatured && (
-          <div className="featured absolute top-0 right-0">FEATURED</div>
-        )}
+        {restaurant.isFeatured && <div className="featured absolute top-0 right-0">FEATURED</div>}
       </div>
       <div className="p-4 flex flex-col gap-3">
         <div className="flex gap-3 justify-between">
-          <div className="flex flex-col gap-1">
-            <h2
-              className={`restaurant-card-title ${isLoading ? "loading" : ""}`}
-            >
+          <div className={`flex flex-col gap-1 ${isLoading ? 'loading' : ''}`}>
+            <h2 className={`restaurant-card-title ${isLoading ? 'loading' : ''}`}>
               {restaurant.restaurantName}
             </h2>
-            <div
-              className={`flex gap-[6px] items-center ${
-                isLoading ? "loading" : ""
-              }`}
-            >
+            <div className={`flex gap-[6px] items-center ${isLoading ? 'loading' : ''}`}>
               {!isLoading && (
                 <>
                   <div className="clock">
@@ -52,7 +41,7 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
                   </div>
                   <div
                     className={`delivery-time  flex gap-2 items-center ${
-                      isLoading ? "loading" : ""
+                      isLoading ? 'loading' : ''
                     }`}
                   >
                     <span>{restaurant.deliveryTime}</span>
@@ -68,11 +57,7 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
           </div>
 
           <ShoppingBag
-            variant={
-              isLoading
-                ? ShoppingBagVariant.LOADING
-                : ShoppingBagVariant.RESTAURANT
-            }
+            variant={isLoading ? ShoppingBagVariant.LOADING : ShoppingBagVariant.RESTAURANT}
             count={restaurant.count}
           />
         </div>
@@ -81,16 +66,12 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
             ? Array.from({ length: 2 }).map((_, index) => (
                 <Pill
                   key={`loading-${index}`}
-                  className={isLoading ? "loading" : ""}
+                  className={isLoading ? 'loading' : ''}
                   text="      "
                 />
               ))
-            : categories.map((category) => (
-                <Pill
-                  key={category.title}
-                  text={category.title}
-                  icon={category.image}
-                />
+            : categories.map(category => (
+                <Pill key={category.title} text={category.title} icon={category.image} />
               ))}
         </div>
       </div>
@@ -98,4 +79,4 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
   );
 };
 
-export default RestaurantCard;
+export default memo(RestaurantCard);

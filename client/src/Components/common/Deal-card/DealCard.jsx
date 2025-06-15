@@ -1,15 +1,7 @@
-import useDeviceType, { DEVICE_TYPE } from "../../../Utils/deviceType";
-import "./DealCard.css";
+import useDeviceType, { DEVICE_TYPE } from '../../../utils/deviceType';
+import './DealCard.css';
 
-const DealCard = ({
-  title,
-  description,
-  image,
-  backgroundColor,
-  dealColor,
-  className,
-  offer,
-}) => {
+const DealCard = ({ title, description, image, backgroundColor, dealColor, className, offer }) => {
   const deviceType = useDeviceType();
 
   return (
@@ -25,10 +17,7 @@ const DealCard = ({
 
           <div className="flex flex-col py-6">
             <div className="deal-card-title"> {title} </div>
-            <h2
-              className={`deal-card-offer ${deviceType}`}
-              style={{ color: dealColor }}
-            >
+            <h2 className={`deal-card-offer ${deviceType}`} style={{ color: dealColor }}>
               {offer}
             </h2>
             <p className="mt-auto  deal-card-description">{description}</p>
@@ -40,15 +29,10 @@ const DealCard = ({
           <div className="flex flex-col w-full p-4 md:p-6 ">
             <div className="flex justify-between items-center">
               <div className="deal-card-title"> {title} </div>
-              <p className={`deal-card-description ${deviceType}`}>
-                {description}
-              </p>
+              <p className={`deal-card-description ${deviceType}`}>{description}</p>
             </div>
 
-            <h2
-              className={`deal-card-offer ${deviceType}`}
-              style={{ color: dealColor }}
-            >
+            <h2 className={`deal-card-offer ${deviceType}`} style={{ color: dealColor }}>
               {offer}
             </h2>
             <div className={`deal-card-image  ${deviceType}`}></div>

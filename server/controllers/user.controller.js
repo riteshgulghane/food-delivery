@@ -67,8 +67,8 @@ class UserController {
 
   async deleteUser(req, res) {
     try {
-      const result = await userService.deleteUser(req.params.id);
-      res.status(200).json(result); // 200 OK
+      await userService.deleteUser(req.params.id);
+      res.status(200).json({ message: 'User deleted successfully' });
     } catch (error) {
       console.error('Controller Error: deleteUser:', error.message);
       if (error.message.includes('User not found')) {
@@ -80,6 +80,22 @@ class UserController {
       }
     }
   }
+
+  // Login user
+  async loginUser(req, res) {
+    try {
+      const { email, password } = req.body;
+      const result = await userService.loginUser(email, password);
+      res.status(200).json(result);
+    } catch (error) {
+      console.error('Controller Error: loginUser:', error.message);
+      if (error.message.includes('Invalid email or password')) {
+        res.status(401).json({ message: error.message });
+      } else {
+        res.status(500).json({ message: 'Server error during login' });
+      }
+    }
+  }
 }
 
-module.exports = new UserController(); 
+module.exports = new UserController();

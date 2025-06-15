@@ -1,4 +1,4 @@
-import "./Pill.css";
+import './Pill.css';
 
 const Pill = ({ text, className, icon }) => {
   return (

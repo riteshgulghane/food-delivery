@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Checkbox = ({ label, checked, onChange }) => {
   return (
@@ -10,7 +10,7 @@ const Checkbox = ({ label, checked, onChange }) => {
         onChange={onChange}
         className="w-5 h-5 border-2 border-neutral-gray-light rounded-md"
         style={{
-          borderColor: "var(--neutral-gray-light)",
+          borderColor: 'var(--neutral-gray-light)',
         }}
       />
       <span className="text-sm leading-5">{label}</span>

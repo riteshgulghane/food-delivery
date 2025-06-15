@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import "./Toast.css";
+import './Toast.css';
 
 export const ToastTypes = {
-  INFO: "info",
-  WARNING: "warning",
-  ERROR: "error",
-  SUCCESS: "success",
+  INFO: 'info',
+  WARNING: 'warning',
+  ERROR: 'error',
+  SUCCESS: 'success',
 };
 
 const ToastIcon = {
-  [ToastTypes.INFO]: "/assets/icons/info.svg",
-  [ToastTypes.WARNING]: "/assets/icons/warning.svg",
-  [ToastTypes.ERROR]: "/assets/icons/error.svg",
-  [ToastTypes.SUCCESS]: "/assets/icons/success.svg",
+  [ToastTypes.INFO]: '/assets/icons/info.svg',
+  [ToastTypes.WARNING]: '/assets/icons/warning.svg',
+  [ToastTypes.ERROR]: '/assets/icons/error.svg',
+  [ToastTypes.SUCCESS]: '/assets/icons/success.svg',
 };
 
 const Toast = ({ message, type, className, ...rest }) => (
@@ -32,8 +32,7 @@ Toast.propTypes = {
 
 Toast.defaultProps = {
   type: ToastTypes.INFO,
-  message:
-    "Oops! Seems like something is broken. Please check after some time.",
+  message: 'Oops! Seems like something is broken. Please check after some time.',
 };
 
 export default Toast;

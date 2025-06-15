@@ -1,28 +1,26 @@
-import "./ShoppingBag.css";
+import './ShoppingBag.css';
 
 export const ShoppingBagVariant = {
-  DEFAULT: "default",
-  CART: "cart",
-  RESTAURANT: "restaurant",
-  LOADING: "loading",
+  DEFAULT: 'default',
+  CART: 'cart',
+  RESTAURANT: 'restaurant',
+  LOADING: 'loading',
 };
 
 const ShoppingBagVariantStyles = {
-  [ShoppingBagVariant.DEFAULT]: "",
-  [ShoppingBagVariant.CART]: "cart",
-  [ShoppingBagVariant.RESTAURANT]: "restaurant",
+  [ShoppingBagVariant.DEFAULT]: '',
+  [ShoppingBagVariant.CART]: 'cart',
+  [ShoppingBagVariant.RESTAURANT]: 'restaurant',
 };
 
 const ShoppingBag = ({ count, variant = ShoppingBagVariant.CART }) => {
   return (
-    <div
-      className={`relative shopping-bag ${ShoppingBagVariantStyles[variant]}`}
-    >
+    <div className={`relative shopping-bag ${ShoppingBagVariantStyles[variant]}`}>
       <img
         src={
           variant === ShoppingBagVariant.LOADING || count === 0
-            ? "/asset/icons/shopping_bag_disabled.svg"
-            : "/asset/icons/shopping bag.svg"
+            ? '/asset/icons/shopping_bag_disabled.svg'
+            : '/asset/icons/shopping bag.svg'
         }
         alt="Shopping Bag"
       />

@@ -5,13 +5,13 @@ const Search = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleSearch = useCallback(
-    debounce((value) => {
+    debounce(value => {
       onSearch(value);
     }, 300),
     [onSearch]
   );
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const value = e.target.value;
     setQuery(value);
     handleSearch(value);
@@ -25,7 +25,7 @@ const Search = ({ onSearch }) => {
       onChange={handleChange}
       placeholder="Search"
       icon={<img src="/asset/icons/search.svg" alt="Search" />}
-    />  
+    />
   );
 };
 
