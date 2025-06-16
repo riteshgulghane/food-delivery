@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import ToastNotification from '../common/ToastNotification/ToastNotification';
 import { ToastTypes } from '../common/Toast/Toast';
 import { useNavigate } from 'react-router-dom';
-import { setAuthData } from '../../utils/auth';
+import { setAuthData } from '../../Auth/auth';
 import './Login.css';
 import useDeviceType, { DEVICE_TYPE } from '../../utils/deviceType';
 

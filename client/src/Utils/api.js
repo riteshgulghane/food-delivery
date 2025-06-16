@@ -1,5 +1,5 @@
 // api.js - API client with authentication
-import { getAuthHeader } from './auth';
+import { getAuthHeader } from '../Auth/auth';
 
 const API_BASE_URL = '/api';
 
