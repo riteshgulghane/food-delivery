@@ -1,6 +1,6 @@
 // ProtectedRoute.js - HOC for protected routes
 import { Navigate, useLocation } from 'react-router-dom';
-import { getToken } from '../../Auth/auth';
+import { getToken } from '../../utility/auth';
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
