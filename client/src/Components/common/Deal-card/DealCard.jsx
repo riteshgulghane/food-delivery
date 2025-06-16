@@ -1,4 +1,4 @@
-import useDeviceType, { DEVICE_TYPE } from '../../../utils/deviceType';
+import useDeviceType, { DEVICE_TYPE } from '../../../utility/deviceType';
 import './DealCard.css';
 
 const DealCard = ({ title, description, image, backgroundColor, dealColor, className, offer }) => {

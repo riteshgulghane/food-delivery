@@ -9,12 +9,13 @@ import { ToastTypes } from '../common/Toast/Toast';
 import { useNavigate } from 'react-router-dom';
 import { setAuthData } from '../../Auth/auth';
 import './Login.css';
-import useDeviceType, { DEVICE_TYPE } from '../../utils/deviceType';
+import useDeviceType, { DEVICE_TYPE } from '../../utility/deviceType';
 
 const PageType = {
   SIGNIN: 'sign in',
   SIGNUP: 'sign up',
 };
+
 const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

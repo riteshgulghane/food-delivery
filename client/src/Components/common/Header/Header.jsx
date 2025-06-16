@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 import './Header.css';
 import ShoppingBag from '../Shopping-bag/ShoppingBag';
-import useDeviceType, { DEVICE_TYPE } from '../../../utils/deviceType';
+import useDeviceType, { DEVICE_TYPE } from '../../../utility/deviceType';
 
 const Header = () => {
   const handleSearch = value => {
