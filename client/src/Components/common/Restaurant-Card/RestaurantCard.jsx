@@ -1,10 +1,12 @@
 import Pill from '../Pill/Pill';
 import './RestaurantCard.css';
 import { useMemo, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ShoppingBag, { ShoppingBagVariant } from '../Shopping-bag/ShoppingBag';
 import { getCategoryImagesMap } from '../../../Store/Category.store';
 
 const RestaurantCard = ({ restaurant, className, isLoading }) => {
+  const navigate = useNavigate();
   const categoryImagesMap = getCategoryImagesMap();
 
   // Use useMemo instead of useState + useEffect to avoid unnecessary re-renders
@@ -13,8 +15,16 @@ const RestaurantCard = ({ restaurant, className, isLoading }) => {
     return restaurant.categories.map(category => categoryImagesMap[category]);
   }, [restaurant, categoryImagesMap, isLoading]);
 
+  const handleCardClick = () => {
+    if (!isLoading && restaurant && restaurant.id) {
+      navigate(`/restaurant/${restaurant.id}`);
+    }
+  };
+
   return (
-    <div className={`restaurant-card ${className} flex flex-col md:flex-row lg:flex-col gap-4`}>
+    <div 
+      className={`restaurant-card ${className} flex flex-col md:flex-row lg:flex-col gap-4 cursor-pointer`}
+      onClick={handleCardClick}>
       <div className="restaurant-image relative">
         {isLoading ? (
           <div className="loading restaurant-card-image"></div>

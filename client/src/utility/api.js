@@ -3,17 +3,39 @@ import { getAuthHeader } from './auth';
 
 const API_BASE_URL = '/api';
 
+// Request interceptors
+const requestInterceptors = [];
+
+// Add default request interceptor for authentication
+requestInterceptors.push((config) => {
+  return {
+    ...config,
+    headers: {
+      ...config.headers,
+      ...getAuthHeader(),
+      'Content-Type': 'application/json',
+      'X-Client-Version': '1.0.0',
+    }
+  };
+});
+
+// Apply all request interceptors
+const applyRequestInterceptors = (config) => {
+  return requestInterceptors.reduce((acc, interceptor) => interceptor(acc), config);
+};
+
 export const apiFetch = async (endpoint, options = {}) => {
   const url = `${API_BASE_URL}${endpoint}`;
-  const headers = {
-    ...getAuthHeader(),
-    ...(options.headers || {}),
-  };
+  
+  // Apply request interceptors
+  const interceptedOptions = applyRequestInterceptors({
+    ...options,
+    headers: options.headers || {},
+  });
 
   try {
     const response = await fetch(url, {
-      ...options,
-      headers,
+      ...interceptedOptions,
       credentials: 'include', // Include cookies if needed
     });
 
@@ -40,3 +62,19 @@ export const apiFetch = async (endpoint, options = {}) => {
     throw error;
   }
 };
+
+// Function to add a custom request interceptor
+export const addRequestInterceptor = (interceptor) => {
+  requestInterceptors.push(interceptor);
+};
+
+// Example usage:
+// addRequestInterceptor((config) => {
+//   return {
+//     ...config,
+//     headers: {
+//       ...config.headers,
+//       'Custom-Header': 'CustomValue',
+//     }
+//   };
+// });
